@@ -34,18 +34,18 @@ apps=(
   slack                # Slack(#)
   # transmit             # SFTP client and more https://panic.com/transmit/
   # appcleaner           # Cleans files and apps http://www.macupdate.com/app/mac/25276/appcleaner
-  # firefox              # Firefox browser
+  firefox              # Firefox browser
   # hazel                # Automatic filing https://www.noodlesoft.com/hazel.php
   # seil                 # Change CAPS-LOCK key (e.g. to ESC), https://github.com/tekezo/Seil
   # karabiner            # Keyboard mappings customizer https://github.com/tekezo/Karabiner
   # spotify
-  # vagrant              # Vagrant
+  vagrant              # Vagrant
   # arq                  # Backup tool https://www.arqbackup.com/
   # flash                # Adobe Flash https://github.com/caskroom/homebrew-cask/blob/master/Casks/flash.rb
   iterm2               # iTerm2 terminal replacement app
   # shiori               # Pinboard and Delicious OS X client http://aki-null.net/shiori/
-  # sublime-text         # Sublime Text 2
-  # sublime-text3        # Sublime Text 3
+  # sublime-text         # Sublime Text
+  sublime-text2        # Sublime Text 2
   virtualbox           # Virtualbox
   vagrant              # Vagrant https://www.vagrantup.com/
   vagrant-manager      # Vagrant manager https://github.com/lanayotech/vagrant-manager
@@ -55,20 +55,20 @@ apps=(
   # mailbox
   # sketch              # Digital design app, http://www.sketchapp.com/
   # tower               # git client http://www.git-tower.com
-  # vlc                 # VLC (Video Lan Player)
+  vlc                 # VLC (Video Lan Player)
   # cloudup             # Share stuff https://cloudup.com
   # nvalt               # Some app to write quicker http://brettterpstra.com/projects/nvalt/
   skype               # Skype
   # transmission        # BitTorrent Client http://www.transmissionbt.com/
   # cyberduck           # Libre FTP, SFTP, WebDAV, S3, Azure & OpenStack Swift browser https://cyberduck.io/
-  quicksilver        # Progressive autolearning shortcuts for OS X http://qsapp.com/
+  # quicksilver        # Progressive autolearning shortcuts for OS X http://qsapp.com/
   imageoptim         # Lossless in-place image compression https://imageoptim.com/
   # sequel-pro          # MySQL management app http://www.sequelpro.com/
   spectacle          # Keyboard shortcuts for window management https://github.com/eczarny/spectacle
   screenflow          # Video editing software http://telestream.net/screenflow/overview.htm
   gimp               # GIMP, Image editing software
   # rescuetime       # Rescue Time https://www.rescuetime.com
-  docker             # Docker
+  docker             # Docker for mac
 )
 
 # fonts
@@ -90,13 +90,13 @@ atom=(
   # easy-motion                 # Quickly navigate among words in the same line
   # editor-stats                # Display statistics about keyboard and mouse usage
   # fancy-new-file              # Allows to create a file inside a folder directly. Unavailable for atom 1.10
-  # git-diff                    # Shows in Atom which lines have been added, edited or modified. Already included in the bundle
+  git-diff                    # Shows in Atom which lines have been added, edited or modified. Already included in the bundle
   git-history                   # Shows the different versions of a file
   # image-view                  # Displays images in the editor. Bundled with atom.
   # inc-dec-value               # Increases, decreases a number, capitalizes, lowercases strings with the alt+up, alt+down shortcut
   # key-peek                    # Keybinding resolving
   # language-jade               # Language grammar for Jade programming
-  # markdown-preview            # Markdown preview (for Readme.md, for example). Activate with ctrl+shift+m. Bundled with atom
+  markdown-preview            # Markdown preview (for Readme.md, for example). Activate with ctrl+shift+m. Bundled with atom
   # neutron-ui                  # No info found
   npm-install                   # Automatically installs and save Node packages not already included
   # react                       # React.js syntax support. Incompatible with language-babel
@@ -106,7 +106,7 @@ atom=(
   autocomplete-modules          # Autocomplete whenever there's a require clause
   color-picker                  # Displays a color picker in atom
   docblockr                     # Helps the creation of documentation
-  emmet                         # Quick coding for HTML
+  # emmet                         # Quick coding for HTML
   file-icons                    # Adds icons depending on the type of the file
   highlight-line                # Highlights the current line.
   highlight-selected            # Double clicking a word will highlight it in all the file

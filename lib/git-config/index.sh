@@ -1,4 +1,5 @@
 function config {
+  git config --global core.autocrlf input
   if ! [ -f git/gitconfig.symlink ]
   then
     info 'setup gitconfig'

@@ -5,7 +5,8 @@ main(){
   brew install zsh zsh-completions
 
   # Install zplug, the manager of plugins we will use.
-  if [[ !-d ~/.zplug ]]; then
+  if [[ ! -d ~/.zplug ]]; then
+    echo "zplug not found. Installing zplug..."
     curl -sL zplug.sh/installer | zsh
   fi
 

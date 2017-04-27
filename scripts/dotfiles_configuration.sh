@@ -18,6 +18,7 @@ main()
   # For some reason, a git repo is created at ~ directory. Remove it:
   rm ~/.git
   source ~/.zshrc
+  source ~/.gemrc
   # Some files created are created without permissions required. Add this line to modify this permissions
   compaudit | xargs chmod g-w
 
