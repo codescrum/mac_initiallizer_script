@@ -4,7 +4,7 @@
 set -eu   # Make that the errors in every script stop the execution of the general script.
 
 # Set hosts configurations
-sh scripts/hosts.sh
+sh scripts/set_hosts.sh
 
 # First of all, install brew and some other required installers (core-utils also for the realpath, etc.)
 sh scripts/binaries.sh
