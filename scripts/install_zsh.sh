@@ -7,7 +7,9 @@ main(){
   # Install zplug, the manager of plugins we will use.
   if [[ ! -d ~/.zplug ]]; then
     echo "zplug not found. Installing zplug..."
-    curl -sL zplug.sh/installer | zsh
+    mkdir $HOME/.zplug
+    export ZPLUG_HOME=$HOME/.zplug
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
   fi
 
   # Update the zsh console manually to run zsh
