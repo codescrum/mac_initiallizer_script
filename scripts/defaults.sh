@@ -860,6 +860,13 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
+# Google Keystone (Google Update Manager)                                     #
+###############################################################################
+
+# Check https://www.macobserver.com/tmo/article/how-manage-the-secret-software-that-google-chrome-installs-on-your-mac
+defaults write com.google.Keystone.Agent checkInterval 172800
+
+###############################################################################
 # GPGMail 2                                                                   #
 ###############################################################################
 
