@@ -11,6 +11,8 @@ main(){
   if [ -z $(which phantomenv) ]; then
     # Install phantomenv
     git clone -b v0.0.10 https://github.com/boxen/phantomenv.git ~/.phantomenv
+    export PATH="$HOME/.phantomenv/bin:$PATH"
+    eval "$(phantomenv init -)"
   fi
 }
 main "$@"

@@ -23,7 +23,8 @@ main()
   compaudit | xargs chmod g-w
 
   # Node build installation, for using the command nodenv install
-  git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
+  # git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
+  brew install node-build
 }
 
 script_exec_dir=$(dirname $0)

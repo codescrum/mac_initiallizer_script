@@ -105,60 +105,84 @@ fi
 ###############################################################################
 # General UI/UX
 ###############################################################################
-import "generalUI"
 
-# generalUI__removeIcons          # Just leave some of the icons on the top right
-generalUI__disableGK            # No GateKeeper, allow all apps to be installed
-# generalUI__incrWindResize       # Increase window resize speed for Cocoa apps
-generalUI__expSavePanel         # Expanding the save panel by default
-generalUI__autoQuitPrinter      # quit printer app when finished printing
-# generalUI__showCtrlChars        # Visible ASCII control characters using caret notation in standard text views
-# generalUI__disableSysResume     # Disable resume where you left off?
-generalUI__disableAutoTerminate # manually require to kill inactive apps
-generalUI__saveToDisk           # no write to iCloud, rather, save to disk (NSDocumentSaveNewDocumentsToCloud -bool false)
-generalUI__hostInfoOnLogin      # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
-# generalUI__sleepModeOff         # turn off computer sleep for good?
-generalUI__dailySoftUpdate      # check for software updates daily
-generalUI__disableSmartQuotes   # Disable smart quotes and smart dashes as they're annoying when typing code
+# Set sidebar icon size to medium
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Disable automatic termination of inactive apps
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# Reveal IP address, hostname, OS version, etc. when clicking the clock
+# in the login window
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+# Restart automatically if the computer freezes
+systemsetup -setrestartfreeze on
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable smart dashes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input
 ###############################################################################
-import "inputOutput"
 
-inputOutput__incrBluetoothSound  # Better bluetooth sound by increasing bitrate
-inputOutput__fullKeyboardControl # (e.g. enable Tab in modal dialogs)
-inputOutput__disablePressAndHold # no sticky keys?
-inputOutput__keyboardFastRepeat  # e.g. fast backspace
-inputOutput__disableAutoCorrect  # no autocorrect
-inputOutput__trackpadSpeed       # set trackpad speed to a reasonable setting
-inputOutput__keyboardLightSleep  # Sleep keyboard light after 5 minutes
+# Better bluetooth sound by increasing bitrate
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+defaults write NSGlobalDomain KeyRepeat -int 0
+
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+defaults write -g com.apple.trackpad.scaling 2
+
+defaults write -g com.apple.mouse.scaling 2.5
+
+defaults write com.apple.BezelServices kDimTime -int 300
 
 ###############################################################################
 # Screen
 ###############################################################################
-import "screen"
 
-screen__passwordRequiredAfterSleep # Ask for password immediately
-# screen__subpixFontRendering        # Enabling subpixel font rendering on non-Apple LCDs
-# screen__hiDPIDisplay               # Enable HiDPI display modes (requires restart) [simulates retina's sharpness for non-retina screens]
-
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 ###############################################################################
 # Finder
 ###############################################################################
-import "finder"
 
-finder__showVolumeIconsOnDesk
-finder__showFileExtensions
-finder__showStatusBar
-# finder__textSelectInPreview
-finder__showPOSIXPath
-finder__disableExtChangeWarn
-finder__columnView
-finder__avoidDSStoreOnNetwork
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder FXPreferredViewStyle Clmv
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
 # finder__disableDiskImgCheck
 # finder__snapToGridIcons
 
@@ -166,80 +190,44 @@ finder__avoidDSStoreOnNetwork
 ###############################################################################
 # Dock & Mission Control
 ###############################################################################
-import "dock"
 
-dock__iconSize      # Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate
-dock__speedUpMCAnim # Speeding up Mission Control animations and grouping windows by application
+defaults write com.apple.dock tilesize -int 36
+
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock "expose-group-by-app" -bool true
+
 # dock__dockAutoHide  # Setting Dock to auto-hide and removing the auto-hiding delay
-
-###############################################################################
-# Safari & WebKit
-###############################################################################
-import "safari"
-
-# safari__hideBookmrkBar
-# safari__hideSideBar
-safari__disableThumbCache      # Disabling Safari's thumbnail cache for History and Top Sites
-safari__enableDebugMenu        # Enabling Safari's debug menu
-safari__searchBannerContains   # Making Safari's search banners default to Contains instead of Starts With
-safari__removeUselessBookmarks
-safari__backspaceToPrevious
-safari__enableDevMenu
-safari__webInspectorCtxtMenu
-safari__disableWebkit2Java
-safari__disableWebkit2JavaLocalFiles
 
 ###############################################################################
 # Mail
 ###############################################################################
-import "mail"
 
-mail__copyShortAddress
-
-###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-import "spotlight"
-
-spotlight__disableIdxNewVolume
-# spotlight__changeIndexingOrder
-
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 ###############################################################################
 # Terminal & iTerm 2
 ###############################################################################
-import "term"
 
-term__utf8Only
-term__proTheme
-term__disableQuitPrompt
-
-###############################################################################
-# Time Machine
-###############################################################################
-import "timeMachine"
-
-timeMachine__disableUseNewDrivePrompt
-timeMachine__disableLocalBackup
+defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
 # Messages                                                                    #
 ###############################################################################
-import "message"
 
-# message__disableAutoEmoji
-# message__disableSmartQuotes
-message__disableSpellChecking
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false 
 
 ###############################################################################
 # Personal Additions
 ###############################################################################
-import "misc"
 
 # misc__disableHibernate
 # misc__removeSleepImage
-misc__disableMotionSensor
-misc__speedUpWakeFromSleep12
+sudo pmset -a sms 0
+
+sudo pmset -a standbydelay 43200
+
 # misc__disableComputerSleep
 # misc__disableChromeBackswipe
 
@@ -281,8 +269,6 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # SSD-specific tweaks                                                         #
 ###############################################################################
 
-# Disable local Time Machine snapshots
-sudo tmutil disablelocal
 
 # Disable hibernation (speeds up entering sleep mode)
 # sudo pmset -a hibernatemode 0
@@ -336,8 +322,8 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
-# defaults write com.apple.screensaver askForPassword -int 1
-# defaults write com.apple.screensaver askForPasswordDelay -int 0
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
 # defaults write com.apple.screencapture location -string "${HOME}/Desktop"
@@ -770,7 +756,7 @@ set -e
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+sudo tmutil disable
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -982,7 +968,4 @@ defaults write com.operasoftware.OperaDeveloper PMPrintingExpandedStateForPrint2
 #     killall "${app}" > /dev/null 2>&1
 # done
 # set -e
-echo "Done. Note that some of these changes require a logout/restart to take effect."
-
-
-###############################
+echo "Done. Note that some of these changes require a logout/restart of your OS to take effect.  At a minimum, be sure to restart your Terminal."
