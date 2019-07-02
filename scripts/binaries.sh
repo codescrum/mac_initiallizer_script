@@ -10,38 +10,36 @@ then
 fi
 
 # Update homebrew
+echo "Updating homebrew"
 brew update
-show_status "Updating homebrew" "$?"
+
+# Upgrade any already-installed formulae.
+brew upgrade
 
 # The console threw a warning about Xcode CLI. Install it
 xcode-select --install
 
 set +e
-
-echo "Installing coreutils, findutils, bash v4 and grep (dupe)"
+echo "Installing coreutils, findutils, bash v4 and grep"
 
 # Install GNU core utilities (those that come with OS X are outdated)
+echo "Installing GNU coreutils"
 brew install coreutils
-show_status "Installing GNU coreutils" "$?"
 
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+echo "Installing findutils"
 brew install findutils
-show_status "Installing findutils" "$?"
 
 # Install Bash 4
+echo "Installing Bash"
 brew install bash
-show_status "Installing Bash" "$?"
 
 # Install more recent versions of some OS X tools
-brew tap homebrew/dupes
-brew tap homebrew/versions
-brew install homebrew/dupes/grep
-show_status "Installing dupes' grep" "$?"
+echo "Installing grep"
+brew install grep
 
-# Install the gnu-sed in order to use opt-parse found in https://github.com/nk412/optparse for the
 # scripts that could come next.
-brew install gnu-sed --with-default-names
-show_status "Installing gnu-sed" "$?"
+brew install gnu-sed
 
 set -e
 
@@ -53,33 +51,20 @@ binaries=(
   git                 # git
   hub                 # git+hub (from Github)
   fasd                # Command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v, https://github.com/clvv/fasd
-  # postgres            # Postgres
-  # phantomenv          # PhantomJS version manager (rbenv for phantomjs) # better to just enabled on its own
   jenv                # java version manager (rbenv for java) [javas must be manually added]
   qt                  # qt lib
   imagemagick         # watch out for graphicsmagick possible conflicts with executables, http://www.graphicsmagick.org/utilities.html
   pkgconfig           # or pkg-config? is an utility that reads metadata in order to correctly install components at compile time (gcc)
-  # graphicsmagick      # imagemagick alternative, provides some of the same executables
-  # docker              # The docker client.
-  # docker-machine      # Also available as a cask, but this seems more adequate as it is just a binary
-  # webkit2png
-  # rename
-  # zopfli
-  # ffmpeg
-  # python
-  # mongo
-  # sshfs
-  # trash
-  # node
 )
 
 # Install the binaries
 set +e # If already installed, non-zero status error is reported, skip that
+echo "Installing brew binaries"
 brew install ${binaries[@]}
-show_status "Installing brew binaries" "$?"
 set -e # revert back to errors aborting the entire script
+
 # Installing DVM through cURL. It looks like brew recipe is not working well.
-curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh
 # Remove outdated versions from the cellar
 brew cleanup
 
