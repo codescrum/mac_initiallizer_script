@@ -1,3 +1,13 @@
 # Install gems without docs by default
+# From https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install/7662245#7662245
+# Note that --no-ri and --no-rdoc have been deprecated according to the new guides (https://guides.rubygems.org/command-reference/#gem_install)
+# The recommended way is to use --no-document in ~/.gemrc or /etc/gemrc.
+#
+# install: --no-document
+# update: --no-document
+# or
+#
+# gem: --no-document
+#
 ---
-gem: --no-ri --no-rdoc
+gem: --no-document
