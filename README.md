@@ -11,16 +11,16 @@ tools a developer needs.
 
 ## Structure
 The directory structure is as follows: <br>
-* <b>dots.sh</b>: The main script, execute multiple calls to other scripts contained in
+* <b>init.sh</b>: The main script, execute multiple calls to other scripts contained in
 the scripts folder.
 * <b>scripts</b>: This folder contains all the executed scripts
 * <b>templates</b>: This folder might contain a whole bunch of configuration dotfiles. Right now,
 it has only a .zshrc template.
 
 ## How it works?
-The main script, dots.sh, executes one by one the scripts in the scripts folder, in the following
+The main script, init.sh, executes one by one the scripts in the scripts folder, in the following
 order:
-* <b><i>defaults.sh</b></i> (Not yet implemented): This script changes some Mac defaults at a low
+* <b><i>defaults.sh</b></i>: This script changes some Mac defaults at a low
 level in order to improve performance, visibility and usability. Refer to the script for wider information.
 
 * <b>binaries.sh</b>: This script installs some tools like:
@@ -59,6 +59,8 @@ to the firewalls for security
 * <b>dotfiles_configuration.sh</b>: This file is run with the zsh shell rather than the bash console. It copies the templates in the templates directory to a directory in the `$HOME` directory called dotfiles. In this directory, is created a git repository and the templates are symlinked to the actual configuration files. In this way, any change done to the files in the `~/dotfiles` directory will be reflected directly in the configuration files and will be also under control version.
 
 ## Contributors
+[Miguel Diaz](https://github.com/gato-omega)
+
 [Diego Alejandro Alvis Palencia](https://github.com/diegoalvis)
 
 [Sebastián Felipe Landínez García](https://github.com/sflang1)
